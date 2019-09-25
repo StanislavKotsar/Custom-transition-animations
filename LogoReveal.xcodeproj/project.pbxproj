@@ -14,6 +14,7 @@
 		9C967C671A4F1B6C00A588A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C967C661A4F1B6C00A588A2 /* Images.xcassets */; };
 		9C967C6A1A4F1B6C00A588A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C967C681A4F1B6C00A588A2 /* LaunchScreen.xib */; };
 		9C967C821A4F1F6100A588A2 /* RWLogoLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C967C801A4F1F6100A588A2 /* RWLogoLayer.swift */; };
+		DF24EB63233BE3970025DEF8 /* RevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF24EB62233BE3970025DEF8 /* RevealAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9C967C661A4F1B6C00A588A2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9C967C691A4F1B6C00A588A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9C967C801A4F1F6100A588A2 /* RWLogoLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLogoLayer.swift; sourceTree = "<group>"; };
+		DF24EB62233BE3970025DEF8 /* RevealAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				9C967C661A4F1B6C00A588A2 /* Images.xcassets */,
 				9C967C681A4F1B6C00A588A2 /* LaunchScreen.xib */,
 				9C967C5B1A4F1B6C00A588A2 /* Supporting Files */,
+				DF24EB62233BE3970025DEF8 /* RevealAnimator.swift */,
 			);
 			path = LogoReveal;
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -150,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF24EB63233BE3970025DEF8 /* RevealAnimator.swift in Sources */,
 				9C967C821A4F1F6100A588A2 /* RWLogoLayer.swift in Sources */,
 				9C967C621A4F1B6C00A588A2 /* DetailViewController.swift in Sources */,
 				9C967C601A4F1B6C00A588A2 /* MasterViewController.swift in Sources */,
