@@ -10,7 +10,7 @@ import UIKit
 
 class RevealAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
     
-    let animationDuration = 2.0
+    let animationDuration = 1.2
     var operation: UINavigationController.Operation = .push
     weak var storedContext: UIViewControllerContextTransitioning?
     
@@ -46,12 +46,31 @@ class RevealAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimati
                 animation.isRemovedOnCompletion = false
                 animation.timingFunction = CAMediaTimingFunction(name:
                   .easeIn)
-                
+            
                 let maskLayer: CAShapeLayer = RWLogoLayer.logoLayer()
                 maskLayer.position = fromVC.logo.position
                 toVC.view.layer.mask = maskLayer
                 maskLayer.add(animation, forKey: nil)
                 fromVC.logo.add(animation, forKey: nil)
+                // fade-in animation
+                let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
+                fadeInAnimation.fromValue = 0
+                fadeInAnimation.toValue = 1
+                fadeInAnimation.duration = animationDuration
+                toVC.view.layer.add(fadeInAnimation, forKey: nil)
+        } else {
+            guard let fromVC = transitionContext.view(forKey: .from),
+                  let toVC = transitionContext.view(forKey: .to) else { return }
+            
+            transitionContext.containerView.addSubview(fromVC)
+            transitionContext.containerView.insertSubview(toVC, belowSubview: fromVC)
+            
+            UIView.animate(withDuration: animationDuration, animations: {
+                fromVC.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                fromVC.layer.opacity = 0
+            }) { _ in
+                transitionContext.completeTransition(true)
+            }
         }
     }
     
