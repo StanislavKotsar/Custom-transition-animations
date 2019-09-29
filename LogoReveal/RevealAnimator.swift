@@ -8,10 +8,12 @@
 
 import UIKit
 
-class RevealAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
+class RevealAnimator: UIPercentDrivenInteractiveTransition,
+  UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
     
     let animationDuration = 1.2
     var operation: UINavigationController.Operation = .push
+    var interactive = false
     weak var storedContext: UIViewControllerContextTransitioning?
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -86,6 +88,10 @@ class RevealAnimator: NSObject, UIViewControllerAnimatedTransitioning, CAAnimati
         
       }
       storedContext = nil
+    }
+    
+    func handlePan(_ recognizer: UIPanGestureRecognizer) {
+
     }
 
 }
