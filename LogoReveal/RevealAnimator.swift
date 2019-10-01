@@ -90,6 +90,22 @@ class RevealAnimator: UIPercentDrivenInteractiveTransition,
         }
     }
     
+    override func cancel() {
+      restart(forFinishing: false)
+      super.cancel()
+    }
+
+    override func finish() {
+      restart(forFinishing: true)
+      super.finish()
+    }
+
+    private func restart(forFinishing: Bool) {
+      let transitionLayer = storedContext?.containerView.layer
+      transitionLayer?.beginTime = CACurrentMediaTime()
+      transitionLayer?.speed = forFinishing ? 1 : -1
+    }
+    
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
       if let context = storedContext {
         context.completeTransition(!context.transitionWasCancelled)
@@ -105,7 +121,6 @@ class RevealAnimator: UIPercentDrivenInteractiveTransition,
     }
     
     func handlePan(_ recognizer: UIPanGestureRecognizer) {
-        
         let translation = recognizer.translation(in:
           recognizer.view!.superview!)
         var progress: CGFloat = abs(translation.x / 200.0)
@@ -114,6 +129,13 @@ class RevealAnimator: UIPercentDrivenInteractiveTransition,
         switch recognizer.state {
           case .changed:
             update(progress)
+          case .cancelled, .ended:
+            if progress < 0.5 {
+              cancel()
+            } else {
+              finish()
+            }
+            interactive = false
           default:
             break
         }
